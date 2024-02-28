@@ -18,7 +18,7 @@ module.exports = {
     liveReload: true,
     proxy: [
       {
-        context: ['/api'],
+        context: ['/api/*'],
         target: 'http://localhost:3000',
       },
     ],

@@ -2,7 +2,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { store } from './slices/store.js';
-import "./main.css";
+import './main.css';
 import styles from './styles.css';
 
 //import browser router elements
@@ -12,7 +12,6 @@ import {
   RouterProvider,
   Route,
 } from 'react-router-dom';
-
 
 //import pages/components.
 import App from './App.jsx';
@@ -24,10 +23,10 @@ import ArticleHistory from './components/ArticleHistory.jsx';
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
-      <Route index={true}  path="/"  element={<Authenticator />} />
+      <Route index={true} path="/" element={<Authenticator />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/feed" element={<Feed />} />
-      <Route path='/articleHistory/:id' element={<ArticleHistory />} />
+      <Route path="/articleHistory/:id" element={<ArticleHistory />} />
     </Route>
   )
 );
