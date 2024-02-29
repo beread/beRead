@@ -1,4 +1,4 @@
-import { Link, useNavigate} from "react-router-dom";
+ import { Link, useNavigate} from "react-router-dom";
 import { useEffect, useState } from "react";
 // import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,7 +8,7 @@ import { useSignupMutation } from "../slices/api/userApiSlice";
 import { setCredentials } from "../slices/reducers/authSlice";
 
 const SignupPage = () => {
-  const [name, setName] = useState("");
+  const [username, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -28,7 +28,7 @@ const SignupPage = () => {
       // The promise returned by the dispatched thunk has an unwrap property which can be called to extract 
       // the payload of a fulfilled action or to throw either the error or, if available, payload created 
       // by rejectWithValue from a rejected action:
-        const res = await signup({name, email, password }).unwrap();
+        const res = await signup({username, email, password }).unwrap();
         // toast.success("Sign up successfully!");
         dispatch(setCredentials(res));
     } catch (error) {
@@ -41,25 +41,31 @@ const SignupPage = () => {
 
   return (
     <section id= "signup">
-      <div className="flex flex-col items-center justify-center mx-auto md:my-6">
-        <div className="w-full border bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0 ">
-          <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-            <h1 className="text-xl font-bold text-center leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+      <div className='relative h-48 w-48'>
+      <div className='absolute top-0 flex w-full justify-center'>
+        <div className='left-0 h-[1px] animate-border-width rounded-full bg-gradient-to-r from-[rgba(17,17,17,0)] via-white to-[rgba(17,17,17,0)] transition-all duration-1000' />
+      </div>
+      <div className='flex h-full items-center justify-center rounded-md border border-gray-800 bg-gradient-to-b from-gray-950 to-black px-3 py-2'>
+        <p className='text-sm text-gray-200'>Card Content</p>
+      </div>
+    </div>
+      {/* <div className="">
+        <div className="">
+          <div className="login-container">
+            <h1 className="sign-in-text">
               Sign Up
             </h1>
 
-            <form onSubmit={submitHandler} className="space-y-4 md:space-y-6">
+            <form onSubmit={submitHandler} className="">
               <div>
                 <label
                   // for="email"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Your name
-                </label>
+                  className="form-label"
+                >Your name</label>
                 <input
                   type="text"
-                  value={name}
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-black focus:border-black block w-full p-2.5 "
+                  value={username}
+                  className="form-input"
                   placeholder="Code Smith"
                   required
                   onChange={(e) => setName(e.target.value)}
@@ -68,14 +74,14 @@ const SignupPage = () => {
               <div>
                 <label
                   // for="email"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  className="form-label"
                 >
                   Your email
                 </label>
                 <input
                   type="email"
                   value={email}
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-black focus:border-black block w-full p-2.5 "
+                  className="form-input"
                   placeholder="name@email.com"
                   required
                   onChange={(e) => setEmail(e.target.value)}
@@ -84,15 +90,12 @@ const SignupPage = () => {
               <div>
                 <label
                   // for="password"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Password
-                </label>
+                  className="form-label">Password</label>
                 <input
                   type="password"
                   value={password}
                   placeholder="••••••••"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-black focus:border-black block w-full p-2.5 "
+                  className="form-input"
                   required
                   onChange={(e) => setPassword(e.target.value)}
                 />
@@ -107,14 +110,11 @@ const SignupPage = () => {
                 </div>
               </div>
 
-              <button
-                type="submit"
-                className="w-full text-white bg-black hover:bg-amber-700 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-              >
-                Sign up
-              </button>
+              <div className="sign-up-btn-container">
+                <button type="submit" className="sign-up-btn">Sign up</button>
+              </div>
 
-              <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+              <p className="body-text">
                 Have an Account?{" "}
                 <Link
                   to="/"
@@ -126,7 +126,7 @@ const SignupPage = () => {
             </form>
           </div>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 };
